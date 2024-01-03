@@ -1,0 +1,577 @@
+{
+  "name": "projects/840118094991/locations/us-east1/integrations/crud-ipnet-bigquery/versions/0bba531b-9979-4cdc-b8bf-f50009fc97c1",
+  "description": "CRUD conectado a bigquery e ao Apigee X da IPNET - Objetivo de estudos - Não remover!",
+  "updateTime": "2024-01-03T16:19:24.941Z",
+  "createTime": "2023-12-20T20:17:20.710Z",
+  "lastModifierEmail": "luiz.carvalho@ipnet.cloud",
+  "triggerConfigs": [{
+    "label": "DELETE",
+    "startTasks": [{
+      "taskId": "11"
+    }],
+    "properties": {
+      "Trigger name": "crud-integration-bq-delete"
+    },
+    "triggerType": "API",
+    "triggerNumber": "2",
+    "triggerId": "api_trigger/crud-integration-bq-delete",
+    "position": {
+      "x": -210
+    }
+  }, {
+    "label": "GET",
+    "startTasks": [{
+      "taskId": "16"
+    }],
+    "properties": {
+      "Trigger name": "crud-integration-bq-get"
+    },
+    "triggerType": "API",
+    "triggerNumber": "7",
+    "triggerId": "api_trigger/crud-integration-bq-get",
+    "position": {
+      "x": -462
+    }
+  }, {
+    "label": "LIST",
+    "startTasks": [{
+      "taskId": "14"
+    }],
+    "properties": {
+      "Trigger name": "crud-integration-bq-list"
+    },
+    "triggerType": "API",
+    "triggerNumber": "6",
+    "triggerId": "api_trigger/crud-integration-bq-list",
+    "position": {
+      "x": -714
+    }
+  }, {
+    "label": "UPDATE",
+    "startTasks": [{
+      "taskId": "10"
+    }],
+    "properties": {
+      "Trigger name": "crud-integration-bq-update"
+    },
+    "triggerType": "API",
+    "triggerNumber": "3",
+    "triggerId": "api_trigger/crud-integration-bq-update",
+    "position": {
+      "x": -966
+    }
+  }, {
+    "label": "CREATE",
+    "startTasks": [{
+      "taskId": "8"
+    }],
+    "properties": {
+      "Trigger name": "crud-integration-bq-create"
+    },
+    "triggerType": "API",
+    "triggerNumber": "5",
+    "triggerId": "api_trigger/crud-integration-bq-create",
+    "position": {
+      "x": -1218
+    }
+  }],
+  "taskConfigs": [{
+    "task": "FieldMappingTask",
+    "taskId": "10",
+    "parameters": {
+      "FieldMappingConfigTaskParameterKey": {
+        "key": "FieldMappingConfigTaskParameterKey",
+        "value": {
+          "jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.FieldMappingConfig\",\n  \"mappedFields\": [{\n    \"inputField\": {\n      \"fieldType\": \"JSON_VALUE\",\n      \"transformExpression\": {\n        \"initialValue\": {\n          \"referenceValue\": \"$inputPayloadCRUD$\"\n        }\n      }\n    },\n    \"outputField\": {\n      \"referenceKey\": \"$`Task_15_connectorInputPayload`$\",\n      \"fieldType\": \"JSON_VALUE\",\n      \"cardinality\": \"OPTIONAL\"\n    }\n  }, {\n    \"inputField\": {\n      \"fieldType\": \"STRING_VALUE\",\n      \"transformExpression\": {\n        \"initialValue\": {\n          \"referenceValue\": \"$filterClauseCRUD$\"\n        }\n      }\n    },\n    \"outputField\": {\n      \"referenceKey\": \"$`Task_15_filterClause`$\",\n      \"fieldType\": \"STRING_VALUE\",\n      \"cardinality\": \"OPTIONAL\"\n    }\n  }]\n}"
+        }
+      }
+    },
+    "nextTasks": [{
+      "taskId": "15"
+    }],
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "Data Mapping U",
+    "externalTaskType": "NORMAL_TASK",
+    "position": {
+      "x": -966,
+      "y": 126
+    }
+  }, {
+    "task": "FieldMappingTask",
+    "taskId": "11",
+    "parameters": {
+      "FieldMappingConfigTaskParameterKey": {
+        "key": "FieldMappingConfigTaskParameterKey",
+        "value": {
+          "jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.FieldMappingConfig\",\n  \"mappedFields\": [{\n    \"inputField\": {\n      \"fieldType\": \"STRING_VALUE\",\n      \"transformExpression\": {\n        \"initialValue\": {\n          \"referenceValue\": \"$filterClauseCRUD$\"\n        }\n      }\n    },\n    \"outputField\": {\n      \"referenceKey\": \"$`Task_7_filterClause`$\",\n      \"fieldType\": \"STRING_VALUE\",\n      \"cardinality\": \"OPTIONAL\"\n    }\n  }]\n}"
+        }
+      }
+    },
+    "nextTasks": [{
+      "taskId": "7"
+    }],
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "Data Mapping D",
+    "externalTaskType": "NORMAL_TASK",
+    "position": {
+      "x": -210,
+      "y": 126
+    }
+  }, {
+    "task": "GenericConnectorTask",
+    "taskId": "4",
+    "parameters": {
+      "entityType": {
+        "key": "entityType",
+        "value": {
+          "stringValue": "squadapigee"
+        }
+      },
+      "connectorInputPayload": {
+        "key": "connectorInputPayload",
+        "value": {
+          "stringValue": "$`Task_4_connectorInputPayload`$"
+        }
+      },
+      "connectorOutputPayload": {
+        "key": "connectorOutputPayload",
+        "value": {
+          "stringValue": "$`Task_4_connectorOutputPayload`$"
+        }
+      },
+      "config": {
+        "key": "config",
+        "value": {
+          "jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.connectors.GenericConnectorTaskConfig\",\n  \"connection\": {\n    \"connectionName\": \"projects/interno-ipnet-dev/locations/us-east1/connections/public-bigquery-interno-ipnet\",\n    \"serviceName\": \"projects/he68ac68a44d1f15a-tp/locations/us-east1/namespaces/connectors/services/runtime\",\n    \"connectorVersion\": \"projects/interno-ipnet-dev/locations/global/providers/gcp/connectors/bigquery/versions/1\"\n  },\n  \"operation\": \"CREATE_ENTITY\"\n}"
+        }
+      }
+    },
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "CREATE",
+    "externalTaskType": "NORMAL_TASK",
+    "position": {
+      "x": -1218,
+      "y": 252
+    }
+  }, {
+    "task": "GenericConnectorTask",
+    "taskId": "7",
+    "parameters": {
+      "filterClause": {
+        "key": "filterClause",
+        "value": {
+          "stringValue": "$`Task_7_filterClause`$"
+        }
+      },
+      "entityType": {
+        "key": "entityType",
+        "value": {
+          "stringValue": "squadapigee"
+        }
+      },
+      "entityId": {
+        "key": "entityId",
+        "value": {
+          "stringValue": "$`Task_7_entityId`$"
+        }
+      },
+      "config": {
+        "key": "config",
+        "value": {
+          "jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.connectors.GenericConnectorTaskConfig\",\n  \"connection\": {\n    \"connectionName\": \"projects/interno-ipnet-dev/locations/us-east1/connections/public-bigquery-interno-ipnet\",\n    \"serviceName\": \"projects/he68ac68a44d1f15a-tp/locations/us-east1/namespaces/connectors/services/runtime\",\n    \"connectorVersion\": \"projects/interno-ipnet-dev/locations/global/providers/gcp/connectors/bigquery/versions/1\"\n  },\n  \"operation\": \"DELETE_ENTITY\"\n}"
+        }
+      }
+    },
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "DELETE",
+    "externalTaskType": "NORMAL_TASK",
+    "position": {
+      "x": -210,
+      "y": 252
+    }
+  }, {
+    "task": "GenericConnectorTask",
+    "taskId": "13",
+    "parameters": {
+      "listEntitiesSortByColumns": {
+        "key": "listEntitiesSortByColumns",
+        "value": {
+          "stringValue": "$`Task_13_listEntitiesSortByColumns`$"
+        }
+      },
+      "filterClause": {
+        "key": "filterClause",
+        "value": {
+          "stringValue": "$`Task_13_filterClause`$"
+        }
+      },
+      "listEntitiesPageToken": {
+        "key": "listEntitiesPageToken",
+        "value": {
+          "stringValue": "$`Task_13_listEntitiesPageToken`$"
+        }
+      },
+      "entityType": {
+        "key": "entityType",
+        "value": {
+          "stringValue": "squadapigee"
+        }
+      },
+      "listEntitiesPageSize": {
+        "key": "listEntitiesPageSize",
+        "value": {
+          "stringValue": "$`Task_13_listEntitiesPageSize`$"
+        }
+      },
+      "listEntitiesNextPageToken": {
+        "key": "listEntitiesNextPageToken",
+        "value": {
+          "stringValue": "$`Task_13_listEntitiesNextPageToken`$"
+        }
+      },
+      "connectorOutputPayload": {
+        "key": "connectorOutputPayload",
+        "value": {
+          "stringValue": "$`Task_13_connectorOutputPayload`$"
+        }
+      },
+      "config": {
+        "key": "config",
+        "value": {
+          "jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.connectors.GenericConnectorTaskConfig\",\n  \"connection\": {\n    \"connectionName\": \"projects/interno-ipnet-dev/locations/us-east1/connections/public-bigquery-interno-ipnet\",\n    \"serviceName\": \"projects/he68ac68a44d1f15a-tp/locations/us-east1/namespaces/connectors/services/runtime\",\n    \"connectorVersion\": \"projects/interno-ipnet-dev/locations/global/providers/gcp/connectors/bigquery/versions/1\"\n  },\n  \"operation\": \"LIST_ENTITIES\"\n}"
+        }
+      }
+    },
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "LIST",
+    "externalTaskType": "NORMAL_TASK",
+    "position": {
+      "x": -714,
+      "y": 252
+    }
+  }, {
+    "task": "GenericConnectorTask",
+    "taskId": "15",
+    "parameters": {
+      "filterClause": {
+        "key": "filterClause",
+        "value": {
+          "stringValue": "$`Task_15_filterClause`$"
+        }
+      },
+      "entityType": {
+        "key": "entityType",
+        "value": {
+          "stringValue": "squadapigee"
+        }
+      },
+      "connectorInputPayload": {
+        "key": "connectorInputPayload",
+        "value": {
+          "stringValue": "$`Task_15_connectorInputPayload`$"
+        }
+      },
+      "entityId": {
+        "key": "entityId",
+        "value": {
+          "stringValue": "$`Task_15_entityId`$"
+        }
+      },
+      "connectorOutputPayload": {
+        "key": "connectorOutputPayload",
+        "value": {
+          "stringValue": "$`Task_15_connectorOutputPayload`$"
+        }
+      },
+      "config": {
+        "key": "config",
+        "value": {
+          "jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.connectors.GenericConnectorTaskConfig\",\n  \"connection\": {\n    \"connectionName\": \"projects/interno-ipnet-dev/locations/us-east1/connections/public-bigquery-interno-ipnet\",\n    \"serviceName\": \"projects/he68ac68a44d1f15a-tp/locations/us-east1/namespaces/connectors/services/runtime\",\n    \"connectorVersion\": \"projects/interno-ipnet-dev/locations/global/providers/gcp/connectors/bigquery/versions/1\"\n  },\n  \"operation\": \"UPDATE_ENTITY\"\n}"
+        }
+      }
+    },
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "UPDATE",
+    "externalTaskType": "NORMAL_TASK",
+    "position": {
+      "x": -966,
+      "y": 252
+    }
+  }, {
+    "task": "FieldMappingTask",
+    "taskId": "14",
+    "parameters": {
+      "FieldMappingConfigTaskParameterKey": {
+        "key": "FieldMappingConfigTaskParameterKey",
+        "value": {
+          "jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.FieldMappingConfig\",\n  \"mappedFields\": [{\n    \"inputField\": {\n      \"fieldType\": \"INT_VALUE\",\n      \"transformExpression\": {\n        \"initialValue\": {\n          \"referenceValue\": \"$pageSizeItens$\"\n        }\n      }\n    },\n    \"outputField\": {\n      \"referenceKey\": \"$`Task_13_listEntitiesPageSize`$\",\n      \"fieldType\": \"INT_VALUE\",\n      \"cardinality\": \"OPTIONAL\"\n    }\n  }]\n}"
+        }
+      }
+    },
+    "nextTasks": [{
+      "taskId": "13"
+    }],
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "Data Mapping",
+    "externalTaskType": "NORMAL_TASK",
+    "position": {
+      "x": -714,
+      "y": 126
+    }
+  }, {
+    "task": "FieldMappingTask",
+    "taskId": "8",
+    "parameters": {
+      "FieldMappingConfigTaskParameterKey": {
+        "key": "FieldMappingConfigTaskParameterKey",
+        "value": {
+          "jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.FieldMappingConfig\",\n  \"mappedFields\": [{\n    \"inputField\": {\n      \"fieldType\": \"JSON_VALUE\",\n      \"transformExpression\": {\n        \"initialValue\": {\n          \"referenceValue\": \"$inputPayloadCRUD$\"\n        }\n      }\n    },\n    \"outputField\": {\n      \"referenceKey\": \"$`Task_4_connectorInputPayload`$\",\n      \"fieldType\": \"JSON_VALUE\",\n      \"cardinality\": \"OPTIONAL\"\n    }\n  }]\n}"
+        }
+      }
+    },
+    "nextTasks": [{
+      "taskId": "4"
+    }],
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "Data Mapping C",
+    "externalTaskType": "NORMAL_TASK",
+    "position": {
+      "x": -1218,
+      "y": 126
+    }
+  }, {
+    "task": "GenericConnectorTask",
+    "taskId": "17",
+    "parameters": {
+      "listEntitiesSortByColumns": {
+        "key": "listEntitiesSortByColumns",
+        "value": {
+          "stringValue": "$`Task_17_listEntitiesSortByColumns`$"
+        }
+      },
+      "filterClause": {
+        "key": "filterClause",
+        "value": {
+          "stringValue": "$`Task_17_filterClause`$"
+        }
+      },
+      "listEntitiesPageToken": {
+        "key": "listEntitiesPageToken",
+        "value": {
+          "stringValue": "$`Task_17_listEntitiesPageToken`$"
+        }
+      },
+      "entityType": {
+        "key": "entityType",
+        "value": {
+          "stringValue": "squadapigee"
+        }
+      },
+      "listEntitiesPageSize": {
+        "key": "listEntitiesPageSize",
+        "value": {
+          "stringValue": "$`Task_17_listEntitiesPageSize`$"
+        }
+      },
+      "listEntitiesNextPageToken": {
+        "key": "listEntitiesNextPageToken",
+        "value": {
+          "stringValue": "$`Task_17_listEntitiesNextPageToken`$"
+        }
+      },
+      "connectorOutputPayload": {
+        "key": "connectorOutputPayload",
+        "value": {
+          "stringValue": "$`Task_17_connectorOutputPayload`$"
+        }
+      },
+      "config": {
+        "key": "config",
+        "value": {
+          "jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.connectors.GenericConnectorTaskConfig\",\n  \"connection\": {\n    \"connectionName\": \"projects/interno-ipnet-dev/locations/us-east1/connections/public-bigquery-interno-ipnet\",\n    \"serviceName\": \"projects/he68ac68a44d1f15a-tp/locations/us-east1/namespaces/connectors/services/runtime\",\n    \"connectorVersion\": \"projects/interno-ipnet-dev/locations/global/providers/gcp/connectors/bigquery/versions/1\"\n  },\n  \"operation\": \"LIST_ENTITIES\"\n}"
+        }
+      }
+    },
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "GET/READ",
+    "externalTaskType": "NORMAL_TASK",
+    "position": {
+      "x": -462,
+      "y": 252
+    }
+  }, {
+    "task": "FieldMappingTask",
+    "taskId": "16",
+    "parameters": {
+      "FieldMappingConfigTaskParameterKey": {
+        "key": "FieldMappingConfigTaskParameterKey",
+        "value": {
+          "jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.FieldMappingConfig\",\n  \"mappedFields\": [{\n    \"inputField\": {\n      \"fieldType\": \"STRING_VALUE\",\n      \"transformExpression\": {\n        \"initialValue\": {\n          \"referenceValue\": \"$filterClauseCRUD$\"\n        }\n      }\n    },\n    \"outputField\": {\n      \"referenceKey\": \"$`Task_17_filterClause`$\",\n      \"fieldType\": \"STRING_VALUE\",\n      \"cardinality\": \"OPTIONAL\"\n    }\n  }]\n}"
+        }
+      }
+    },
+    "nextTasks": [{
+      "taskId": "17"
+    }],
+    "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+    "displayName": "Data Mapping R",
+    "externalTaskType": "NORMAL_TASK",
+    "position": {
+      "x": -462,
+      "y": 126
+    }
+  }],
+  "integrationParameters": [{
+    "key": "`Task_17_listEntitiesPageSize`",
+    "dataType": "INT_VALUE",
+    "displayName": "`Task_17_listEntitiesPageSize`",
+    "producer": "1_17"
+  }, {
+    "key": "`Task_17_listEntitiesPageToken`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_17_listEntitiesPageToken`",
+    "producer": "1_17"
+  }, {
+    "key": "`Task_17_listEntitiesSortByColumns`",
+    "dataType": "STRING_ARRAY",
+    "displayName": "`Task_17_listEntitiesSortByColumns`",
+    "producer": "1_17"
+  }, {
+    "key": "`Task_17_filterClause`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_17_filterClause`",
+    "producer": "1_17"
+  }, {
+    "key": "`Task_15_connectorInputPayload`",
+    "dataType": "JSON_VALUE",
+    "displayName": "`Task_15_connectorInputPayload`",
+    "producer": "1_15",
+    "jsonSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"Nome\": {\n      \"type\": \"string\",\n      \"readOnly\": false,\n      \"description\": \"Nome do profissional do apigee\"\n    },\n    \"Projetos\": {\n      \"type\": [\"string\", \"null\"],\n      \"readOnly\": false\n    },\n    \"Empresa-cliente\": {\n      \"type\": [\"string\", \"null\"],\n      \"readOnly\": false\n    },\n    \"Gerente-projeto\": {\n      \"type\": [\"string\", \"null\"],\n      \"readOnly\": false\n    }\n  }\n}"
+  }, {
+    "key": "`Task_15_entityId`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_15_entityId`",
+    "producer": "1_15"
+  }, {
+    "key": "`Task_15_filterClause`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_15_filterClause`",
+    "producer": "1_15"
+  }, {
+    "key": "`Task_7_entityId`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_7_entityId`",
+    "producer": "1_7"
+  }, {
+    "key": "`Task_7_filterClause`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_7_filterClause`",
+    "producer": "1_7"
+  }, {
+    "key": "`Task_15_connectorOutputPayload`",
+    "dataType": "JSON_VALUE",
+    "displayName": "`Task_15_connectorOutputPayload`",
+    "inputOutputType": "OUT",
+    "isTransient": true,
+    "producer": "1_15"
+  }, {
+    "key": "`Task_17_connectorOutputPayload`",
+    "dataType": "JSON_VALUE",
+    "displayName": "`Task_17_connectorOutputPayload`",
+    "inputOutputType": "OUT",
+    "isTransient": true,
+    "producer": "1_17",
+    "jsonSchema": "{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"Nome\": {\n        \"type\": \"string\",\n        \"readOnly\": false,\n        \"description\": \"Nome do profissional do apigee\"\n      },\n      \"Projetos\": {\n        \"type\": [\"string\", \"null\"],\n        \"readOnly\": false\n      },\n      \"Empresa-cliente\": {\n        \"type\": [\"string\", \"null\"],\n        \"readOnly\": false\n      },\n      \"Gerente-projeto\": {\n        \"type\": [\"string\", \"null\"],\n        \"readOnly\": false\n      }\n    }\n  }\n}"
+  }, {
+    "key": "`Task_4_connectorInputPayload`",
+    "dataType": "JSON_VALUE",
+    "defaultValue": {
+      "jsonValue": "{\n  \"CPF\": \"\",\n  \"NOME\": \"\",\n  \"PROJETOS\": \"\",\n  \"EMPRESACLIENTE\": \"\",\n  \"GERENTEPROJETO\": \"\"\n}"
+    },
+    "displayName": "`Task_4_connectorInputPayload`",
+    "inputOutputType": "IN",
+    "producer": "1_4",
+    "jsonSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"Nome\": {\n      \"type\": \"string\",\n      \"readOnly\": false,\n      \"description\": \"Nome do profissional do apigee\"\n    },\n    \"Projetos\": {\n      \"type\": [\"string\", \"null\"],\n      \"readOnly\": false\n    },\n    \"Empresa-cliente\": {\n      \"type\": [\"string\", \"null\"],\n      \"readOnly\": false\n    },\n    \"Gerente-projeto\": {\n      \"type\": [\"string\", \"null\"],\n      \"readOnly\": false\n    }\n  }\n}"
+  }, {
+    "key": "`Task_17_listEntitiesNextPageToken`",
+    "dataType": "STRING_VALUE",
+    "defaultValue": {
+      "stringValue": ""
+    },
+    "displayName": "`Task_17_listEntitiesNextPageToken`",
+    "isTransient": true,
+    "producer": "1_17"
+  }, {
+    "key": "pageSizeItens",
+    "dataType": "INT_VALUE",
+    "defaultValue": {
+      "intValue": "1"
+    },
+    "displayName": "pageSizeItens",
+    "inputOutputType": "IN"
+  }, {
+    "key": "`Task_13_listEntitiesPageSize`",
+    "dataType": "INT_VALUE",
+    "displayName": "`Task_13_listEntitiesPageSize`",
+    "producer": "1_13"
+  }, {
+    "key": "`Task_13_listEntitiesPageToken`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_13_listEntitiesPageToken`",
+    "producer": "1_13"
+  }, {
+    "key": "`Task_13_listEntitiesSortByColumns`",
+    "dataType": "STRING_ARRAY",
+    "displayName": "`Task_13_listEntitiesSortByColumns`",
+    "producer": "1_13"
+  }, {
+    "key": "`Task_13_filterClause`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_13_filterClause`",
+    "producer": "1_13"
+  }, {
+    "key": "`Task_13_listEntitiesNextPageToken`",
+    "dataType": "STRING_VALUE",
+    "displayName": "`Task_13_listEntitiesNextPageToken`",
+    "isTransient": true,
+    "producer": "1_13"
+  }, {
+    "key": "inputPayloadCRUD",
+    "dataType": "JSON_VALUE",
+    "defaultValue": {
+      "jsonValue": "{\n  \"CPF\": \"\",\n  \"NOME\": \"\",\n  \"PROJETOS\": \"\",\n  \"EMPRESACLIENTE\": \"\",\n  \"GERENTEPROJETO\": \"\"\n}"
+    },
+    "displayName": "inputPayloadCRUD",
+    "jsonSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\"\n}"
+  }, {
+    "key": "`Task_13_connectorOutputPayload`",
+    "dataType": "JSON_VALUE",
+    "displayName": "`Task_13_connectorOutputPayload`",
+    "inputOutputType": "OUT",
+    "isTransient": true,
+    "producer": "1_13",
+    "jsonSchema": "{\n  \"type\": \"array\",\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"items\": {\n    \"type\": \"object\",\n    \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n    \"properties\": {\n      \"CPF\": {\n        \"type\": \"number\",\n        \"readOnly\": false\n      },\n      \"NOME\": {\n        \"type\": \"string\",\n        \"readOnly\": false\n      },\n      \"PROJETOS\": {\n        \"type\": [\"string\", \"null\"],\n        \"readOnly\": false\n      },\n      \"EMPRESACLIENTE\": {\n        \"type\": [\"string\", \"null\"],\n        \"readOnly\": false\n      },\n      \"GERENTEPROJETO\": {\n        \"type\": [\"string\", \"null\"],\n        \"readOnly\": false\n      }\n    }\n  }\n}"
+  }, {
+    "key": "`Task_4_connectorOutputPayload`",
+    "dataType": "JSON_VALUE",
+    "displayName": "`Task_4_connectorOutputPayload`",
+    "inputOutputType": "OUT",
+    "isTransient": true,
+    "producer": "1_4"
+  }, {
+    "key": "filterClauseCRUD",
+    "dataType": "STRING_VALUE",
+    "defaultValue": {
+      "stringValue": "CPF\u003d123456789 OR NOME\u003d\u0027primeiro nome\u0027"
+    },
+    "displayName": "filterClauseCRUD",
+    "inputOutputType": "IN"
+  }, {
+    "key": "_env",
+    "dataType": "STRING_VALUE",
+    "defaultValue": {
+      "stringValue": "dev"
+    },
+    "displayName": "_env"
+  }]
+}
