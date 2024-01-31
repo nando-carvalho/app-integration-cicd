@@ -1,0 +1,47 @@
+{
+	"connection_overrides": [
+		{
+			"taskId": "13",
+			"task": "GenericConnectorTask",
+			"parameters": {
+				"connectionName": "public-bigquery-interno-ipnet"
+			}
+		},
+		{
+			"taskId": "4",
+			"task": "GenericConnectorTask",
+			"parameters": {
+				"connectionName": "public-bigquery-interno-ipnet"
+			}
+		},
+		{
+			"taskId": "7",
+			"task": "GenericConnectorTask",
+			"parameters": {
+				"connectionName": "public-bigquery-interno-ipnet"
+			}
+		},
+		{
+			"taskId": "15",
+			"task": "GenericConnectorTask",
+			"parameters": {
+				"connectionName": "public-bigquery-interno-ipnet"
+			}
+		},
+		{
+			"taskId": "17",
+			"task": "GenericConnectorTask",
+			"parameters": {
+				"connectionName": "public-bigquery-interno-ipnet"
+			}
+		}
+	],
+	"param_overrides": [
+		{
+			"key": "_env",
+			"defaultValue": {
+				"stringValue": "qa"
+			}
+		}
+	]
+}
