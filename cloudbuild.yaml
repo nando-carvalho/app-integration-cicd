@@ -34,7 +34,7 @@ steps:
     #- -k=locations/$LOCATION/keyRings/${_KMS_RING_NAME}/cryptoKeys/${_KMS_KEY_NAME}
     #- --sa=${_SERVICE_ACCOUNT_NAME}
 
-#the name of the service account  to use when setting up the connector
+#the name of the service account  to use when setting up the connecto
 substitutions:
   _GRANT_PERMISSIONS: "true"
   _CREATE_SECRET: "false"
