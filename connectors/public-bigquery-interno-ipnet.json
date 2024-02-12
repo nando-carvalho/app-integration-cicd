@@ -1,0 +1,26 @@
+{
+	"description": "Conector para testar um CRUD no apigee integration usando o banco bigquery público.",
+	"connectorDetails": {
+		"name": "bigquery",
+		"provider": "gcp",
+		"version": 1
+	},
+	"configVariables": [
+		{
+			"key": "project_id",
+			"stringValue": "interno-ipnet-dev"
+		},
+		{
+			"key": "dataset_id",
+			"stringValue": "testandoConectoresIntegracao"
+		}
+	],
+	"authConfig": {},
+	"logConfig": {},
+	"sslConfig": {
+		"privateServerCertificate": {},
+		"clientCertificate": {},
+		"clientPrivateKey": {},
+		"clientPrivateKeyPass": {}
+	}
+}
