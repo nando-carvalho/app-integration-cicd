@@ -27,6 +27,7 @@ steps:
     - --reg=us-east1
     - --proj=interno-ipnet-dev
     - --metadata-token
+    - --token=${token}
     - $(cat /tmp/cmd)
     # uncomment these as necessary
     #- --g=${_GRANT_PERMISSIONS}
