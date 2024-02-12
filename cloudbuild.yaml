@@ -24,8 +24,8 @@ steps:
     - -f
     - .
     - --wait=${_WAIT}
-    - --reg=${_LOCATION}
-    - --proj=${PROJECT_ID}
+    - --reg=us-east1
+    - --proj=interno-ipnet-dev
     - --metadata-token
     - $(cat /tmp/cmd)
     # uncomment these as necessary
