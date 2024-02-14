@@ -27,8 +27,8 @@ steps:
     - --wait=${_WAIT}
     - --reg=${_LOCATION}
     - --proj=${_PROJECT_ID}    
-    #- --token=ya29.a0AfB_byC3XlF4n9knjifI89CcdJsdDlVA1ei2IVQZGSXFaD_ILTKLgkB64YOi5NX44rkgNEJj-ZOuv51JoWAWeOKW1Y0PnKLLS_eIG1zxgjOEcsqNwRzEdIm47eFJ-iC5HGOvpaGTgm1u-R8qxCfslsCFBCz-Jf5Z11mVIRhFxb1EaCgYKAe4SARESFQHGX2MiIE8KaArovHWJYIxgG7igFg0179    
-    - --sa=${_SERVICE_ACCOUNT_NAME}
+    - --token=$(gcloud auth print-access-token)
+    #- --sa=${_SERVICE_ACCOUNT_NAME}
     - $(cat /tmp/cmd)
     # uncomment these as necessary
     #- --g=${_GRANT_PERMISSIONS}
