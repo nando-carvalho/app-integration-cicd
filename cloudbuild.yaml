@@ -14,8 +14,9 @@
 
 #to manually trigger from gcloud
 # gcloud builds submit --config=deploy.yaml --project=project-name --region=us-west1
-
+# [START Cloudbuild_config]
 steps:
+  #Docker Build
 - id: 'Apply Integration scaffolding configuration'
   name: us-docker.pkg.dev/appintegration-toolkit/images/integrationcli:latest
   args:
@@ -26,7 +27,7 @@ steps:
     - --wait=${_WAIT}
     - --reg=us-east1
     - --proj=interno-ipnet-dev    
-    - --token=ya29.a0AfB_byD4lEVpHe_uhqBSQBmtE_obDgsNOwmtEdUOPAti2GV_TTgJrvZtkSJTklQJg4vDJdltsWtyVrSW5U33q4LfvorOrdlsm09dgOWGpuJF6XfR86t5Ve7nZMzzksRuqwUlqVi396E3dA_atPWYmu5NuMzlADZZ305NbgKTx9nOaCgYKAWsSARESFQHGX2MidiUHHHI91MHyI1N8rqBFYA0179
+    - --account=${_SERVICE_ACCOUNT_NAME}
     - $(cat /tmp/cmd)
     # uncomment these as necessary
     #- --g=${_GRANT_PERMISSIONS}
