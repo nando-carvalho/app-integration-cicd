@@ -27,8 +27,8 @@ steps:
     - --wait=${_WAIT}
     - --reg=${_LOCATION}
     - --proj=${_PROJECT_ID}    
-    #- --token=ya29.a0AfB_byCd7f6glqL8NanWN0x3Xw4OJ5oZ_9cr9dZ7J3dgXNJ-Ti01g-8K3NncqnAf8vq3OOgiL6lDjlZvvKwIPCIcw_tYoVwwR3o3cKfLkI-PTJYGcR9V2reWlhmlv5BIshW6FAN1ScQ2HOLxnZ0QCHja3irXxmkjjDk771yOohCJaCgYKAb4SARESFQHGX2MipcxCWcgFTjMQxr3mVUYtkQ0179
-    - --sa=${_SERVICE_ACCOUNT_NAME}
+    - --token=ya29.a0AfB_byC3XlF4n9knjifI89CcdJsdDlVA1ei2IVQZGSXFaD_ILTKLgkB64YOi5NX44rkgNEJj-ZOuv51JoWAWeOKW1Y0PnKLLS_eIG1zxgjOEcsqNwRzEdIm47eFJ-iC5HGOvpaGTgm1u-R8qxCfslsCFBCz-Jf5Z11mVIRhFxb1EaCgYKAe4SARESFQHGX2MiIE8KaArovHWJYIxgG7igFg0179
+    #- --sa=${_SERVICE_ACCOUNT_NAME}
     - $(cat /tmp/cmd)
     # uncomment these as necessary
     #- --g=${_GRANT_PERMISSIONS}
