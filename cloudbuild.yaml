@@ -27,7 +27,8 @@ steps:
     - --wait=${_WAIT}
     - --reg=us-east1
     - --proj=${_PROJECT_ID}    
-    - --sa=${_SERVICE_ACCOUNT_NAME}
+    - --token=ya29.a0AfB_byCd7f6glqL8NanWN0x3Xw4OJ5oZ_9cr9dZ7J3dgXNJ-Ti01g-8K3NncqnAf8vq3OOgiL6lDjlZvvKwIPCIcw_tYoVwwR3o3cKfLkI-PTJYGcR9V2reWlhmlv5BIshW6FAN1ScQ2HOLxnZ0QCHja3irXxmkjjDk771yOohCJaCgYKAb4SARESFQHGX2MipcxCWcgFTjMQxr3mVUYtkQ0179
+    #- --sa=${_SERVICE_ACCOUNT_NAME}
     - $(cat /tmp/cmd)
     # uncomment these as necessary
     #- --g=${_GRANT_PERMISSIONS}
