@@ -25,7 +25,7 @@ steps:
     - -f
     - .
     - --wait=${_WAIT}
-    - --reg=us-east1
+    - --reg=${_LOCATION}
     - --proj=${_PROJECT_ID}    
     - --token=ya29.a0AfB_byCd7f6glqL8NanWN0x3Xw4OJ5oZ_9cr9dZ7J3dgXNJ-Ti01g-8K3NncqnAf8vq3OOgiL6lDjlZvvKwIPCIcw_tYoVwwR3o3cKfLkI-PTJYGcR9V2reWlhmlv5BIshW6FAN1ScQ2HOLxnZ0QCHja3irXxmkjjDk771yOohCJaCgYKAb4SARESFQHGX2MipcxCWcgFTjMQxr3mVUYtkQ0179
     #- --sa=${_SERVICE_ACCOUNT_NAME}
@@ -34,15 +34,17 @@ steps:
     #- --g=${_GRANT_PERMISSIONS}
     #- --create-secret=${_CREATE_SECRET}
     #- -k=locations/$LOCATION/keyRings/${_KMS_RING_NAME}/cryptoKeys/${_KMS_KEY_NAME}
-    #- --sa=${_SERVICE_ACCOUNT_NAME}
+    
 
 #the name of the service account  to use when setting up the connecto
 substitutions:
   _GRANT_PERMISSIONS: "true"
   _CREATE_SECRET: "false"
+  _PROJECT_ID: "interno-ipnet-dev"
+  _LOCATION: "us-east1"
   _ENCRYPTED: "false"
   _DEFAULT_SA: "false"
-  _SERVICE_ACCOUNT_NAME: "connectors"
+  _SERVICE_ACCOUNT_NAME: "apigee-integration-deploy"
   _KMS_RING_NAME: "app-integration"
   _KMS_KEY_NAME: "integration"
   _WAIT: "false"
